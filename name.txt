@@ -1,0 +1,12 @@
+﻿aleks:Привет)
+aleks:Что делаешь?
+Olya:Привет. Всё хорошо)
+Enter desired username:w
+Enter desired username:7
+Enter desired username:ssda
+Enter desired username:ggg
+Enter desired username:qqq
+Enter desired username:w
+Enter desired username:rr
+Enter desired username:ddd
+Enter desired username:g
