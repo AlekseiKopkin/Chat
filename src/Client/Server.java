@@ -5,23 +5,26 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    static final int PORT = 3451;
+    // порт, который будет прослушивать наш сервер
+    static final int PORT = 3440;
+
     public Server() {
         try {
-            ServerSocket servers = null;
-            Socket fromclient = null;
-            servers = new ServerSocket(PORT);
+            Socket clientSocket;
+            ServerSocket serverSocket;
+            serverSocket = new ServerSocket(PORT);
             while (true) {
                 // таким образом ждём подключений от сервера
-                fromclient = servers.accept();
+                clientSocket = serverSocket.accept();
                 // создаём обработчик клиента, который подключился к серверу
                 // this - это наш сервер
-                ClientHandler client = new ClientHandler(fromclient);
-                //  clients.add(client);
+                ClientHandler client = new ClientHandler(clientSocket);
+                //clients.add(client);
                 // каждое подключение клиента обрабатываем в новом потоке
                 new Thread(client).start();
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }

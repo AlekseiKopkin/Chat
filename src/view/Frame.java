@@ -2,7 +2,6 @@ package view;
 
 import javax.swing.*;
 
-
 public class Frame extends JFrame {
     private static FrameID frameID;
     private static FrameChat frameChat;
@@ -16,7 +15,7 @@ public class Frame extends JFrame {
 
     public static FrameChat getFrameChat() {
         if (frameChat == null) {
-            frameID.dispose();
+            FrameID.preFrame.dispose();
             frameChat = new FrameChat();
         }
         return frameChat;
