@@ -6,8 +6,6 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ClientHandler implements Runnable {
-    // экземпляр нашего сервера
-    private Server server;
     // исходящее сообщение
     private PrintWriter outMessage;
     // входящее собщение
@@ -30,7 +28,6 @@ public class ClientHandler implements Runnable {
             // Если от клиента пришло сообщение
             if (inMessage.hasNext()) {
                 String clientMessage = inMessage.nextLine();
-                System.out.println(clientMessage);
                 sendMsg(clientMessage);
             }
         }

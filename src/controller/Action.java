@@ -1,5 +1,8 @@
 package controller;
 
+import controller.File.CheckFile;
+import controller.File.FileWrite;
+import controller.File.ReadFile;
 import view.Frame;
 import view.PrintMessages;
 
@@ -34,6 +37,9 @@ public class Action {
                 if (!PanelID.chooseUserName.getText().equals("")) {
                     name = PanelID.chooseUserName.getText();
                     Frame.getFrameChat();
+                    if(new CheckFile().ExistFile()) {
+                        new ReadFile();
+                    }
                 } else {
                     new PrintMessages().NoName();
                 }
@@ -54,7 +60,6 @@ public class Action {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if ((!PanelChat.textField.getText().equals(name + ":")) && (!PanelChat.textField.getText().equals(""))) {
-                    new FileWrite();
                     sendMsg(PanelChat.textField.getText());
                 } else {
                     new PrintMessages().NoMessage();
@@ -71,7 +76,16 @@ public class Action {
                         if (inMessage.hasNext()) {
                             // считываем его
                             String inMes = inMessage.nextLine();
-                            PanelChat.textArea.setText(PanelChat.textArea.getText() + "\n" + inMes);
+                            new CheckFile().ExistFile();
+                            if(new CheckFile().CheckingEmptinessFile()==1) {
+                                PanelChat.textArea.setText(PanelChat.textArea.getText() + "\n" + inMes);
+                            }
+                            else
+                            {
+                                PanelChat.textArea.setText(inMes);
+                            }
+
+                            new FileWrite();
                             PanelChat.textField.setText(name + ":");
                         }
                     }

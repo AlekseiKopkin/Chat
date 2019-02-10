@@ -1,4 +1,6 @@
-package controller;
+package controller.File;
+
+import controller.PanelChat;
 
 import java.io.*;
 
@@ -12,7 +14,7 @@ public class FileWrite {
             bufferWriter.close();
         }
         catch (IOException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }
